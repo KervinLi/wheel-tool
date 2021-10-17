@@ -1,4 +1,4 @@
-package com.tool.module.redis.config;
+package com.tool.redis.config;
 
 import com.alibaba.fastjson.support.spring.GenericFastJsonRedisSerializer;
 import org.slf4j.Logger;
