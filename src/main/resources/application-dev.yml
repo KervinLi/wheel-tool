@@ -55,3 +55,9 @@ rocketmqinfo:
     common: api-producer
   producerTopic: msgProducerTopic #内部消息主题
   producerTag: msgProducerTag #消息Tag
+
+#定时任务开关相关配置
+timerTask:
+  deleteExpiredLogJob: false #删除过期日志的定时任务
+  dataDockingJob: false #数据对接定时任务
+  sendMessageJob: false #发送消息定时任务
