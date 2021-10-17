@@ -1,0 +1,57 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/mall?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+    druid:
+      initial-size: 5 #连接池初始化大小
+      min-idle: 10 #最小空闲连接数
+      max-active: 20 #最大连接数
+      web-stat-filter:
+        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*" #不统计这些请求数据
+      stat-view-servlet: #访问监控网页的登录用户名和密码
+        login-username: druid
+        login-password: druid
+  redis:
+    host: localhost # Redis服务器地址
+    database: 0 # Redis数据库索引（默认为0）
+    port: 6379 # Redis服务器连接端口
+    password: # Redis服务器连接密码（默认为空）
+    timeout: 300ms # 连接超时时间（毫秒）
+
+logging:
+  level:
+    root: info
+    com.macro.mall: debug
+
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/*/*Mapper.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      logic-delete-field: deleteFlag #全局逻辑删除字段值
+      logic-delete-value: 1 # 逻辑已删除值
+      logic-not-delete-value: 0 # 逻辑未删除值
+
+rocketmq:
+  name-server: 192.168.1.5:9876
+  producer:
+    group: apis-group
+    send-message-timeout: 300000
+    compress-message-body-threshold: 4096
+    max-message-size: 4194304
+    retry-times-when-send-async-failed: 4
+    retry-next-server: true
+    retry-times-when-send-failed: 2
+
+#rocketMQ配置信息
+rocketmqinfo:
+  consumerGroup:  # 消费组
+    common: api-consumer #消费端标识
+  consumerTopic: msgConsumerTopic #消费推送消息主题
+  consumerTag: msgConsumerTag  #消费推送消息tag
+  producerGroup: # 生产组
+    common: api-producer
+  producerTopic: msgProducerTopic #内部消息主题
+  producerTag: msgProducerTag #消息Tag

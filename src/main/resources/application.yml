@@ -1,0 +1,18 @@
+server:
+  port: 8888
+  servlet:
+    context-path: /apis/
+# 资源上下文配置
+spring:
+  profiles:
+    #    自己在idea配置profile，不要每次部署到内网再删了
+    active: dev
+
+  application:
+    # 设置application-name方便后续增加监控
+    name: apis-interface
+  #spring-session
+  session:
+    store-type: redis
+    redis:
+      namespace: spring:session:apis:interface
