@@ -24,7 +24,7 @@ public class AutoSendMessageJob {
     @Scheduled(fixedRate = 5000L,initialDelay = 10000L)
     public void autoSendMessage() throws InterruptedException {
         log.info("->TID:{}发送消息任务开始{}",Thread.currentThread().getId(), DateUtils.currentLongDateTime());
-        Thread.sleep(5000);
+        Thread.sleep(3000);
         log.info("<-TID:{}发送消息任务结束{}",Thread.currentThread().getId(), DateUtils.currentLongDateTime());
     }
 }
