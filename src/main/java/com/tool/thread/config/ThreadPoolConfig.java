@@ -14,7 +14,10 @@ import java.util.concurrent.*;
 @Configuration
 public class ThreadPoolConfig {
 
-    private static int a = Runtime.getRuntime().availableProcessors();
+    /**
+     * 处理器核心数
+     */
+    private static int processorsCore = Runtime.getRuntime().availableProcessors();
     /**
      * 此线程池用于CPU密集型任务多线程调度
      * CPU密集型：核心线程数=CPU核心数(或 核心线程数=CPU核心数+1)
@@ -27,7 +30,14 @@ public class ThreadPoolConfig {
     public ExecutorService mainThreadPool() {
         BlockingDeque<Runnable> working = new LinkedBlockingDeque<>(Integer.MAX_VALUE);
         RejectedExecutionHandler handler = new ThreadPoolExecutor.CallerRunsPolicy();
-        ExecutorService threadPool = new ThreadPoolExecutor(2, Runtime.getRuntime().availableProcessors() + 1, 0L, TimeUnit.MICROSECONDS, working, handler);
+        ThreadFactory threadFactory= new CustomizeThreadFactory("main");
+        ExecutorService threadPool = new ThreadPoolExecutor(processorsCore + 1,
+                processorsCore + 1,
+                0L,
+                TimeUnit.MICROSECONDS,
+                working,
+                threadFactory,
+                handler);
         return threadPool;
     }
 
@@ -42,7 +52,14 @@ public class ThreadPoolConfig {
     public ExecutorService deputyThreadPool() {
         BlockingDeque<Runnable> working = new LinkedBlockingDeque<>(Integer.MAX_VALUE);
         RejectedExecutionHandler handler = new ThreadPoolExecutor.CallerRunsPolicy();
-        ExecutorService threadPool = new ThreadPoolExecutor(2, Runtime.getRuntime().availableProcessors() << 1, 0L, TimeUnit.MICROSECONDS, working, handler);
+        ThreadFactory threadFactory= new CustomizeThreadFactory("deputy");
+        ExecutorService threadPool = new ThreadPoolExecutor(processorsCore << 1,
+                processorsCore << 1,
+                0L,
+                TimeUnit.MICROSECONDS,
+                working,
+                threadFactory,
+                handler);
         return threadPool;
     }
 
@@ -57,7 +74,14 @@ public class ThreadPoolConfig {
     public ExecutorService otherThreadPool() {
         BlockingDeque<Runnable> working = new LinkedBlockingDeque<>(Integer.MAX_VALUE);
         RejectedExecutionHandler handler = new ThreadPoolExecutor.CallerRunsPolicy();
-        ExecutorService threadPool = new ThreadPoolExecutor(5, 20, 0L, TimeUnit.MICROSECONDS, working, handler);
+        ThreadFactory threadFactory= new CustomizeThreadFactory("other");
+        ExecutorService threadPool = new ThreadPoolExecutor(5,
+                20,
+                0L,
+                TimeUnit.MICROSECONDS,
+                working,
+                threadFactory,
+                handler);
         return threadPool;
     }
 }
