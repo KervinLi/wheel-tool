@@ -12,12 +12,31 @@ spring:
       stat-view-servlet: #访问监控网页的登录用户名和密码
         login-username: druid
         login-password: druid
+#Redis相关配置
   redis:
     host: localhost # Redis服务器地址
     database: 0 # Redis数据库索引（默认为0）
     port: 6379 # Redis服务器连接端口
     password: # Redis服务器连接密码（默认为空）
     timeout: 300ms # 连接超时时间（毫秒）
+#邮件相关配置
+  mail:
+    host: smtp.qq.com             #SMTP服务器地址
+    username: xuewen.lee@qq.com   #登陆账号
+    password: hjihomehrqmgbicc    #登陆授权码
+    protocol: smtp
+    default-encoding: UTF-8
+    properties:
+      from: xuewen.lee@qq.com   #邮件发信人（即真实邮箱）
+      mail:
+        smtp:
+          auth: false     #开启认证
+    #      socketFactory:
+    #        port: 465     #设置ssl端口
+    #        class: javax.net.ssl.SSLSocketFactory
+# thymeleaf模板
+  thymeleaf:
+    cache: false
 
 logging:
   level:
