@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tool.module.order.mapper.OmsOrderMapper">
+    <update id="updateOrderById">
+        update oms_test_order set order_serial_number=#{order.orderSerialNumber}, order_amount=#{order.orderAmount}, order_price=#{order.orderPrice} where id = #{order.id}
+    </update>
+
+</mapper>
