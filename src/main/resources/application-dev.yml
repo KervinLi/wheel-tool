@@ -22,12 +22,12 @@ spring:
 #邮件相关配置
   mail:
     host: smtp.qq.com             #SMTP服务器地址
-    username: xuewen.lee@qq.com   #登陆账号
-    password: hjihomehrqmgbicc    #登陆授权码
+    username: loginAccount   #登陆账号
+    password: password    #登陆授权码
     protocol: smtp
     default-encoding: UTF-8
     properties:
-      from: xuewen.lee@qq.com   #邮件发信人（即真实邮箱）
+      from: fromEmail   #邮件发信人（即真实邮箱）
       mail:
         smtp:
           auth: false     #开启认证
