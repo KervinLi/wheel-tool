@@ -6,14 +6,16 @@
 4. Spring定时器
 5. 线程池相关优化配置
 6. Spring缓存管理器以及缓存管理
+7. 整合RocketMQ
 ```shell
 src
 ├─main
 │  ├─java # 公共配置
 │  |  └─com.tool
 │  |      ├─mail # 邮件相关
-│  |      ├─module # 
+│  |      ├─module # 业务模块集成
 │  |      ├─redis # Redis 相关 
+│  |      ├─rocketmq # RocketMQ 相关 
 │  |      ├─service # 公共服务类相关 
 │  |      ├─thread # 线程池工具相关 
 │  |      ├─timer # Spring 定时定时器相关 
