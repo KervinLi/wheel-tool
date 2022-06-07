@@ -35,7 +35,7 @@ public class CacheManagerConfig {
     }
 
     /**
-     * 缓存管理器 缓存1天
+     * 缓存管理器 缓存10分钟
      * @param factory
      * @return
      */
