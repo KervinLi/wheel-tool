@@ -56,7 +56,7 @@ public class AsyncConfiguration implements AsyncConfigurer {
          * ThreadPoolExecutor.AbortPolicy:丢弃任务并抛出RejectedExecutionException异常。
          * ThreadPoolExecutor.DiscardPolicy：也是丢弃任务，但是不抛出异常。
          * ThreadPoolExecutor.DiscardOldestPolicy：丢弃队列最前面的任务，然后重新尝试执行任务（重复此过程）
-         * ThreadPoolExecutor.CallerRunsPolicy：重试添加当前的任务，自动重复调用 execute() 方法，直到成功
+         * ThreadPoolExecutor.CallerRunsPolicy：用调用者所在的线程来执行任务
          */
         taskExecutor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
         taskExecutor.initialize();
